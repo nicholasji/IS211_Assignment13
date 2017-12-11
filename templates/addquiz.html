@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Add Quiz</title>
+</head>  
+  <body>
+{% if not session.logged_in %}
+    <a href="{{ url_for('login') }}">log in</a>
+{% else %}
+    <a href="{{ url_for('logout') }}">log out</a>
+{% endif %}
+<p>Add Quiz:</p>
+    {% if session.logged_in %}        
+<form action="/quiz/add" method="post">
+<br>
+Subject:
+<input type="text" name="subject"></input>
+<br>
+Number of Questions:
+<input type="text" name="num_questions"></input>
+<br>
+Date:
+<input type="date" name="qdate"></input>
+<input type="submit" value="Add New Quiz"></input>
+</form>
+
+{% endif %}
+	
+</body>
+</html>

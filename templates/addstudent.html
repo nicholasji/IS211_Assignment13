@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Add Student</title>	
+</head>  
+  
+<body>
+{% if not session.logged_in %}
+    <a href="{{ url_for('login') }}">log in</a>
+{% else %}
+    <a href="{{ url_for('logout') }}">log out</a>
+{% endif %}
+{% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+Add Student:
+ {% if session.logged_in %}    
+<form action="/student/add" method="post">
+First Name:
+<input type="text" name="first_name"></input>
+<br>
+Student Last Name:
+<input type="text" name="last_name"></input>
+<input type="submit" value="Add Student"></input
+</form>
+{% endif %}
+</body>
+</html>

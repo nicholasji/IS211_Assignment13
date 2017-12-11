@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Dashboard</title>	
+</head>  
+  
+<body>
+
+{% if not session.logged_in %}
+<a href="{{ url_for('login') }}">log in</a>
+{% else %}
+<a href="{{ url_for('logout') }}">log out</a>
+{% endif %}
+<p>Student/Grade:</p>
+<table>
+<tr>
+<th>Student ID</th>
+<th>First Name</th>
+<th>Last Name</th>
+</tr>
+{% for student in students %}
+<tr>
+<td>
+{{ student[0] }}
+</td>
+<td>
+{{ student[1] }}
+</td>
+<td>
+{{ student[2] }}
+</td>
+<td>
+<a href="{{ url_for('show_results', username=student[0]) }}">Grades</a>
+</td>
+</tr>
+{% endfor %}
+</table>
+<table>
+<tr>
+<th>Quiz ID</th>
+<th>Subject</th>
+<th>Number of Questions</th>
+<th>Date</th>
+</tr>
+{% for quiz in quizzes %}
+<tr>
+<td>
+{{ quiz[0] }}
+</td>
+<td>
+{{ quiz[1] }}
+</td>
+<td>
+{{ quiz[2] }}
+</td>
+<td>
+{{ quiz[3] }}
+</td>
+</tr>
+{% endfor %}
+</table>
+<table>
+<tr>
+<td><a href="{{ url_for('add_student') }}">Add Student Page</a></td>
+<td><a href="{{ url_for('add_quiz') }}">Add Quiz Page</a></td>
+<td><a href="{{ url_for('add_results') }}">Add Quiz Results</a></td>
+</tr>
+</table>
+	
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head
+<title>Student Grades:</title>	
+</head>  
+<body>
+{% if not session.logged_in %}
+<a href="{{ url_for('login') }}">log in</a>
+{% else %}
+<a href="{{ url_for('logout') }}">log out</a>
+{% endif %}
+Student Grades:
+<table>
+<tr>
+<th>Quiz ID</th>
+<th>Score</th>
+</tr>
+{% for result in results %}
+<tr>
+<td>
+{{ result[1] }}
+</td>
+<td>
+{{ result[0] }}
+</td>
+</tr>
+{% endfor %}
+</table>
+	
+</body>
+</html>
